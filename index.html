@@ -96,22 +96,20 @@
             border-color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Fullscreen Video */
-        .video-container {
+        /* Fullscreen Viewer */
+        .viewer {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            overflow: hidden;
         }
 
-        .video-container video {
+        .viewer iframe {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transform: scale(0.65);
+            border: none;
         }
 
         /* Mobile */
@@ -166,21 +164,14 @@
         </div>
     </nav>
 
-    <div class="video-container">
-        <video 
-            id="bgVideo"
-            autoplay 
-            muted 
-            loop 
-            playsinline
-            poster="https://scaniverse.com/api/media/yztube4io2lypsjh/preview.jpg">
-            <source src="https://scaniverse.com/api/media/yztube4io2lypsjh/videops.mp4" type="video/mp4">
-        </video>
+    <div class="viewer">
+        <iframe 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            allowfullscreen 
+            src="https://scaniverse.com/scan/yztube4io2lypsjh?embed=1">
+        </iframe>
     </div>
-
-    <script>
-        const video = document.getElementById('bgVideo');
-        video.playbackRate = 0.4;
-    </script>
 </body>
 </html>
