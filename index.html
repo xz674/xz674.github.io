@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xz674 - 个人网站</title>
+    <title>xz674</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,126 +15,236 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 300;
+            background: #ffffff;
+            color: #000000;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            margin-top: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero .subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .links {
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #ffffff;
+            padding: 1.5rem 2rem;
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .links a {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+        .nav-left {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-left a {
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: transform 0.2s, box-shadow 0.2s;
+            color: #000000;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: opacity 0.2s;
         }
 
-        .links a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        .nav-left a:hover {
+            opacity: 0.4;
         }
 
-        .section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        .nav-right {
+            display: flex;
+            gap: 1.5rem;
         }
 
-        .section h2 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 0.5rem;
+        .nav-right a {
+            color: #000000;
+            transition: opacity 0.2s;
         }
 
-        .section p {
-            color: #555;
+        .nav-right a:hover {
+            opacity: 0.4;
         }
 
+        .nav-right svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            padding-top: 60px;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Projects Grid */
+        .projects {
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            display: block;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover img {
+            opacity: 0.85;
+        }
+
+        .project-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+            color: #ffffff;
+        }
+
+        .project-title h2 {
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
         footer {
-            text-align: center;
-            padding: 2rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-top: 2rem;
+            padding: 3rem 2rem;
+            font-size: 0.7rem;
+            color: #888888;
+            letter-spacing: 0.1em;
         }
 
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 2rem;
+        footer a {
+            color: #888888;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: #000000;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
             }
-            .hero .subtitle {
-                font-size: 1rem;
+
+            .nav-left {
+                gap: 1.5rem;
+            }
+
+            .nav-left a {
+                font-size: 0.6rem;
+                letter-spacing: 0.1em;
+            }
+
+            .nav-right {
+                display: none;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .project-title h2 {
+                font-size: 0.75rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
-            <h1>xz674</h1>
-            <p class="subtitle">欢迎来到我的个人网站</p>
-            <div class="links">
-                <a href="https://github.com/xz674" target="_blank">GitHub</a>
-                <a href="mailto:your-email@example.com">联系我</a>
+    <nav>
+        <div class="nav-left">
+            <a href="#projects">Projects</a>
+            <a href="#archive">Archive</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <a href="https://instagram.com/" target="_blank" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="2" y="2" width="20" height="20" rx="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="18" cy="6" r="1"/>
+                </svg>
+            </a>
+            <a href="mailto:your@email.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <path d="M2 4l10 8 10-8"/>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="https://picsum.photos/1600/900?random=1" alt="Hero">
+    </section>
+
+    <section class="projects" id="projects">
+        <a href="#" class="project-card">
+            <img src="https://picsum.photos/800/600?random=2" alt="Project 1">
+            <div class="project-title">
+                <h2>Project One</h2>
             </div>
-        </div>
+        </a>
+        <a href="#" class="project-card">
+            <img src="https://picsum.photos/800/600?random=3" alt="Project 2">
+            <div class="project-title">
+                <h2>Project Two</h2>
+            </div>
+        </a>
+        <a href="#" class="project-card">
+            <img src="https://picsum.photos/800/600?random=4" alt="Project 3">
+            <div class="project-title">
+                <h2>Project Three</h2>
+            </div>
+        </a>
+        <a href="#" class="project-card">
+            <img src="https://picsum.photos/800/600?random=5" alt="Project 4">
+            <div class="project-title">
+                <h2>Project Four</h2>
+            </div>
+        </a>
+        <a href="#" class="project-card">
+            <img src="https://picsum.photos/800/600?random=6" alt="Project 5">
+            <div class="project-title">
+                <h2>Project Five</h2>
+            </div>
+        </a>
+        <a href="#" class="project-card">
+            <img src="https://picsum.photos/800/600?random=7" alt="Project 6">
+            <div class="project-title">
+                <h2>Project Six</h2>
+            </div>
+        </a>
+    </section>
 
-        <div class="section">
-            <h2>关于我</h2>
-            <p>这里可以介绍你自己，你的技能、经历和兴趣。</p>
-        </div>
-
-        <div class="section">
-            <h2>项目</h2>
-            <p>在这里展示你的项目和作品。</p>
-        </div>
-
-        <footer>
-            <p>© 2026 xz674. 使用 GitHub Pages 托管</p>
-        </footer>
-    </div>
+    <footer>
+        <p>© 2026 xz674</p>
+    </footer>
 </body>
 </html>
