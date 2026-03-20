@@ -96,22 +96,6 @@
             border-color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Fullscreen Video */
-        .video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         /* Mobile */
         @media (max-width: 768px) {
             nav {
@@ -163,22 +147,5 @@
             </a>
         </div>
     </nav>
-
-    <div class="video-container">
-        <video 
-            id="bgVideo"
-            autoplay 
-            muted 
-            loop 
-            playsinline
-            poster="https://scaniverse.com/api/media/yztube4io2lypsjh/preview.jpg">
-            <source src="zoomout_video.mp4" type="video/mp4">
-        </video>
-    </div>
-
-    <script>
-        const video = document.getElementById('bgVideo');
-        video.playbackRate = 0.5;
-    </script>
 </body>
 </html>
